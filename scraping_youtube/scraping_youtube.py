@@ -5,16 +5,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import time
-place_name="kolkata"
+place_name="bangalore"
 categories={
-	"Dance":["Western Dance Academy India","Classical Dance Academy India","Bollywood Dance Academy India","Zumba Academy India","Bhangra Academy India","Western Dance teacher India","Classical Dance Teacher India", "Bollywood Dance Teacher India", "Zumba Teacher India", "Bhangra Teacher India"],
-	"Foreign Languages":["Learn French India", "Learn German India", "Learn English India", "French Tutor India", "German Tutor India", "English Tutor India"],
-	"Story Time":["Story Telling India", "Story Telling Festival India"],
-	"Singing":["Singing academy India", "Singing tutor india"],
-	"Yoga":["Yoga Academy India", "Yoga Instructor India"],
-	"Chess":["Chess Academy India", "Learn Chess India"]
+	"Dance":["Western Dance Academy","Classical Dance Academy","Bollywood Dance Academy","Zumba Academy","Bhangra Academy","Western Dance teachers","Classical Dance Teachers", "Bollywood Dance Teachers", "Zumba Teachers", "Bhangra Teachers"],
+	"Foreign Languages":["Learn French", "Learn German", "Learn English", "French Tutors", "German Tutors", "English Tutors"],
+	"Story Time":["Story Tellers", "Story Telling Festival"],
+	"Singing":["Singing Academy", "Singing Tutors"],
+	"Yoga":["Yoga Academy", "Yoga Instructors"],
+	"Chess":["Chess Academy", "Learn Chess"]
 }
-#categories={"Dance":["Western Dance Academy India","Classical Dance Academy India"],"Foreign Languages":["Learn French India"]}
 webdriver = "/home/shivam/chromedriver"
 driver = Chrome(webdriver)
 writer = pd.ExcelWriter('Youtube_'+place_name+'.xlsx', engine='xlsxwriter')
@@ -22,7 +21,7 @@ for category in categories:
 	total = []
 	for sub_cat in categories[category]:
 		sub_cat1=sub_cat.replace(' ','+')
-		url = "https://www.youtube.com/results?search_query="+sub_cat1+"+in+"+place_name+"&sp=EgIQAg%253D%253D"
+		url = "https://www.youtube.com/results?search_query="+sub_cat1+"+"+place_name+"+india"+"&sp=EgIQAg%253D%253D"
 		driver.get(url)
 		
 		SCROLL_PAUSE_TIME = 5
